@@ -48,11 +48,18 @@ module.exports = function navigationMapper_API(aliasMap, log) {
               .sortBy('name')
               .forEach(function (it) {
                 if (it.docType !== 'module') {
-                  navItems.push({
+                  var x = {
                     name: it.name,
                     type: it.docType,
                     href: it.path
-                  });
+                  };
+                  if (it.hasOwnProperty('summary')) {
+                    x.summary = it.summary;
+                  }
+                  if (it.hasOwnProperty('labels')) {
+                    x.labels = it.labels;
+                  }
+                  navItems.push(x);
               }
             });
           });

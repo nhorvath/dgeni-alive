@@ -2,6 +2,22 @@
 {% extends "api/api.template.html" %}
 
 {% block additional %}
+
+{%- if doc.labels -%}
+<div class="labels">
+	{%- for label in doc.labels -%}
+	<span class="label label-primary">{$ label $}</span>
+	{% endfor -%}
+</div>
+{%- endif -%}
+
+{%- if doc.summary -%}
+<h2>Intended Use</h2>
+<p class="summary">
+	{$ doc.summary | marked $}
+</p>
+{%- endif -%}
+
 <h2>Directive Info</h2>
 <ul>
 	{% if doc.scope %}<li>This directive creates new scope.</li>{% endif %}
