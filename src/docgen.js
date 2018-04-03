@@ -16,7 +16,8 @@ var DEFAULT_PACKAGES = [
     require('./packages/jsdoc-ext'),
     require('./packages/ngdoc-ext'),
     require('./packages/links-ext'),
-    require('./packages/website')
+    require('./packages/website'),
+    require('./packages/jsx')
 ];
 
 /**
@@ -92,6 +93,18 @@ function configurePackage(p) {
             docTypes: ['factory'],
             idTemplate: 'module:${module}.${docType}:${name}',
             getAliases: getAliases
+        });
+        
+        computeIdsProcessor.idTemplates.push({
+            docTypes: ['component'],
+            idTemplate: 'module:${module}.${docType}:${name}',
+            getAliases: getAliases
+        });
+
+        computePathsProcessor.pathTemplates.push({
+            docTypes: ['component'],
+            pathTemplate: '${area}/${module}/${docType}/${name}',
+            outputPathTemplate: 'partials/${area}/${module}/${docType}/${name}.html'
         });
 
         computePathsProcessor.pathTemplates.push({
