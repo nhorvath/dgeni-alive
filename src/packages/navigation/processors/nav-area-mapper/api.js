@@ -53,6 +53,9 @@ module.exports = function navigationMapper_API(aliasMap, log) {
                     type: it.docType,
                     href: it.path
                   };
+                  if (it.hasOwnProperty('title')) {
+                    x.title = it.title;
+                  }
                   if (it.hasOwnProperty('summary')) {
                     x.summary = it.summary;
                   }
