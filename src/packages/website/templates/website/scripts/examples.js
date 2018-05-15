@@ -138,7 +138,7 @@ angular.module('examples', [])
 				'examplePath': '@'
 			},
 			controllerAs: 'plnkr',
-			template: '<button ng-click="plnkr.open($event)" class="btn pull-right"> <i class="glyphicon glyphicon-edit">&nbsp;</i> Edit in Plunker</button> ',
+			template: '<button ng-click="plnkr.open($event, true)" class="btn pull-right"> <i class="glyphicon glyphicon-edit">&nbsp;</i> Edit in Plunker</button> ',
 			controller: [function PlnkrOpenerCtrl() {
 				var ctrl = this;
 
@@ -169,9 +169,9 @@ angular.module('examples', [])
 					});
 				};
 
-				ctrl.open = function(clickEvent) {
+				ctrl.open = function(clickEvent, newWindow) {
 
-					var newWindow = clickEvent.ctrlKey || clickEvent.metaKey;
+					var newWindow = newWindow || clickEvent.ctrlKey || clickEvent.metaKey;
 
 					var postData = {
 						'tags[0]': 'dgeni',
