@@ -1,0 +1,8 @@
+{% import "lib/macros.html" as lib -%}
+{%- if doc.params %}
+<section class="api-section">
+  <h3>Arguments</h3>
+  Arguments not marked as optional or without a default specified in the Details column are required.
+{$ lib.paramTable(doc.params) $}
+</section>
+{%- endif -%}
